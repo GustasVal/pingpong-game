@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\ProfileController;
-use App\Models\UserManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('profile', ProfileController::class);
-    Route::get('login', [UserManager::class, 'create']);
+    Route::get('login', [User::class, 'create']);
 });
