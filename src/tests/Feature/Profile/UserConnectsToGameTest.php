@@ -15,6 +15,9 @@ class UserConnectsToGameTest extends TestCase
     /** @test */
     public function user_connects_to_game_and_player_id_is_provided()
     {
+        $count = User::all()->count();
+        self::assertEquals(0, $count);
+
         $response = $this->get('/api/v1/login');
 
         $response->assertStatus(200);
@@ -23,8 +26,7 @@ class UserConnectsToGameTest extends TestCase
         ]);
 
         $count = User::all()->count();
-
-        self::assertTrue(1, $count);
+        self::assertEquals(1, $count);
     }
 
 }
