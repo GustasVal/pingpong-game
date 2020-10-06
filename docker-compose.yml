@@ -48,6 +48,14 @@ services:
     networks:
       - laravel
 
+  redis:
+    image: redis
+    container_name: redis-lab
+    ports:
+      - "6379:6379"
+    networks:
+      - laravel
+
   composer:
     build:
       context: .
