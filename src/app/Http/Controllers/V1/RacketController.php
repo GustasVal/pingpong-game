@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\V1;
 
-use App\Events\RacketUpdated;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,12 +21,9 @@ class RacketController extends Controller
     }
 
     //TODO: update racket coordinates
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $string = 'message';
-        broadcast(new RacketUpdated('message'));
-        die('hello');
-//        event(RacketUpdated());
+        //
     }
 
     public function show(Request $request, $id)

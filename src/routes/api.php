@@ -1,8 +1,6 @@
 <?php
 
-use App\Events\RacketUpdated;
 use App\Http\Controllers\V1\ProfileController;
-use App\Http\Controllers\V1\RacketController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,10 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//event(new RacketUpdated('message lol'));
 
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('profile', ProfileController::class);
-    Route::post('racket', [RacketController::class, 'update']);
     Route::get('login', [User::class, 'create']);
 });
