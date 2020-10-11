@@ -25,7 +25,7 @@ class RacketController extends Controller
     public function update(Request $request)
     {
         $string = 'message';
-        event(new RacketUpdated('message'));
+        broadcast(new RacketUpdated('message'));
         die('hello');
 //        event(RacketUpdated());
     }
