@@ -20,29 +20,30 @@ class Socket implements MessageComponentInterface
         $this->clients = new SplObjectStorage;
     }
 
-    public function onOpen(ConnectionInterface $conn) {
-
-        // Store the new connection in $this->clients
+    public function onOpen(ConnectionInterface $conn)
+    {
         $this->clients->attach($conn);
 
         echo "New connection! ({$conn->resourceId})\n";
     }
 
-    public function onMessage(ConnectionInterface $from, $msg) {
-
-        foreach ( $this->clients as $client ) {
-
-            if ( $from->resourceId == $client->resourceId ) {
+    public function onMessage(ConnectionInterface $from, $msg)
+    {
+        echo "Place: {$msg}";
+        foreach ($this->clients as $client) {
+            if ($from->resourceId == $client->resourceId) {
                 continue;
             }
 
-            $client->send( "Client $from->resourceId said $msg" );
+            $client->send($msg);
         }
     }
 
-    public function onClose(ConnectionInterface $conn) {
+    public function onClose(ConnectionInterface $conn)
+    {
     }
 
-    public function onError(ConnectionInterface $conn, \Exception $e) {
+    public function onError(ConnectionInterface $conn, \Exception $e)
+    {
     }
 }
