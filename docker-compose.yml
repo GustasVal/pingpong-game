@@ -8,7 +8,7 @@ services:
     build:
       context: .
       dockerfile: nginx.dockerfile
-    container_name: nginx-lab
+    container_name: nginx-lab-game
     ports:
       - "8080:80"
     volumes:
@@ -21,7 +21,7 @@ services:
 
   mysql:
     image: mysql:5.7.29
-    container_name: mysql-lab
+    container_name: mysql-lab-game
     restart: unless-stopped
     tty: true
     ports:
@@ -40,7 +40,7 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
-    container_name: php-lab
+    container_name: php-lab-game
     volumes:
       - ./src:/var/www/html:delegated
     ports:
@@ -60,7 +60,7 @@ services:
     build:
       context: .
       dockerfile: composer.dockerfile
-    container_name: composer-lab
+    container_name: composer-lab-game
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -73,7 +73,7 @@ services:
 
   npm:
     image: node:13.7
-    container_name: npm-lab
+    container_name: npm-lab-game
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -83,7 +83,7 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
-    container_name: artisan-lab
+    container_name: artisan-lab-game
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
